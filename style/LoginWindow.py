@@ -23,3 +23,20 @@ height:40px;
 width:100px;
 font-size:20px;
 '''
+
+
+submitbutn = '''
+QPushButton{
+    height:50px;
+    width:100px;
+    border-width:2px;
+    border-color: black;
+    border-style: solid;
+    font-size:20px;
+}
+QPushButton:hover{
+    background-color:black;
+    border-color:white;
+    color:white;
+}
+'''

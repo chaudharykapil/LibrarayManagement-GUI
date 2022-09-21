@@ -1,6 +1,6 @@
 from PySide2.QtWidgets import QDialog,QTextEdit,QLineEdit,QVBoxLayout,QLabel,QStyle,QPushButton
 from PySide2.QtCore import Qt
-from style import LoginWindow as loginstyle
+from Style import LoginWindow as loginstyle
 class LoginWindow(QDialog):
     def __init__(self) -> None:
         super().__init__()
@@ -16,11 +16,11 @@ class LoginWindow(QDialog):
 
     def createUI(self):
         self.formtitle = QLabel("Admin Login")
-        self.formtitle.setBaseSize(500,70)
+        self.formtitle.setBaseSize(500,100)
         self.formtitle.setAlignment(Qt.AlignCenter)
         self.usernamefield = QLineEdit()
         self.passwordfield = QLineEdit()
-        self.submitbtn = QPushButton("Submit")
+        self.submitbtn = QPushButton("Login")
         self.mainlayout.addWidget(self.formtitle)
         self.mainlayout.addWidget(self.usernamefield)
         self.mainlayout.addWidget(self.passwordfield)
@@ -32,3 +32,4 @@ class LoginWindow(QDialog):
         self.usernamefield.setStyleSheet(loginstyle.forminput)
         self.passwordfield.setStyleSheet(loginstyle.forminput)
         self.passwordfield.setEchoMode(QLineEdit.Password)
+        self.submitbtn.setStyleSheet(loginstyle.submitbutn)

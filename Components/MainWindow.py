@@ -1,28 +1,42 @@
 
 import sys
-from PySide2.QtWidgets import QApplication,QDialog, QLabel,QMainWindow,QVBoxLayout,QWidget,QPushButton
+from PySide2.QtWidgets import QApplication,QDialog, QLabel,QMainWindow,QVBoxLayout,QWidget,QPushButton,QHBoxLayout
 from PySide2.QtCore import Slot
-from style.style import buttonstyle
+from Style import mainWindow as style
 
 class MainWindow(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         widget = QWidget()
-        self.mainlayout = QVBoxLayout()
+        self.mainlayout = QHBoxLayout()
         widget.setLayout(self.mainlayout)
         self.setCentralWidget(widget)
         self.setMainWindowProperty()
-        self.AddButton()
+        self.makeLeftSection()
+        self.makeRightSection()
+        self.AddCss()
 
+    def makeLeftSection(self):
+        self.leftwidget = QWidget()
+        self.leftLayout = QVBoxLayout()
+        self.leftwidget.setLayout(self.leftLayout)
+        self.mainlayout.addWidget(self.leftwidget)
+    
+    def makeRightSection(self):
+        self.rightwidget = QWidget()
+        self.rightwidget.setFixedSize(100,100)
+        self.rightLayout = QVBoxLayout()
+        self.rightwidget.setLayout(self.rightLayout)
+        self.mainlayout.addWidget(self.rightwidget)
 
-
-    def AddButton(self):
-        button = QPushButton("Press me")
-        button.setFixedSize(50,50)
-        button.setStyleSheet(buttonstyle)
-        self.mainlayout.addChildWidget(button)
+    def MakeHeader():
+        pass
 
 
     def setMainWindowProperty(self):
         self.setGeometry(200,200,1000,600)
         self.setWindowTitle("Library Management")
+
+    def AddCss(self):
+        self.leftwidget.setStyleSheet(style.leftsection)
+        self.rightwidget.setStyleSheet(style.rightsection)
